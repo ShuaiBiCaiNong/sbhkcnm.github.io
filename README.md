@@ -4,7 +4,7 @@
 
 <head>
     
-    <title>標籤：iOS - Cainong&#39;s Blog</title>
+    <title>README - Cainong&#39;s Blog</title>
     <meta charset="UTF-8">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -12,11 +12,15 @@
     
 
     <link rel="shortcut icon" href="https://cainongw.cn//favicon.ico" type="image/x-icon" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Cainong&#39;s Blog">
-<meta property="og:url" content="https://cainongw.cn/tags/iOS/index.html">
+    <meta name="description" content="关于这里是Cainong的blog 网站托管在Github 框架基于Hexo 主题来自Nexmoe，大佬的主题超好看！ cdn加速来自jsdelivr 封面画师来自Pixiv画师ひみつ 个人头像来自画师小已 感谢！ 声明除特别声明或转载外，所有博文采用 CC BY-NC-SA 3.0 CN 协议进行许可 并且，博客内的文章严禁转载至CSDN或简书，无论是否署名 To Do  主题重构  增加文章归">
+<meta property="og:type" content="website">
+<meta property="og:title" content="README">
+<meta property="og:url" content="https://cainongw.cn/README.md">
 <meta property="og:site_name" content="Cainong&#39;s Blog">
+<meta property="og:description" content="关于这里是Cainong的blog 网站托管在Github 框架基于Hexo 主题来自Nexmoe，大佬的主题超好看！ cdn加速来自jsdelivr 封面画师来自Pixiv画师ひみつ 个人头像来自画师小已 感谢！ 声明除特别声明或转载外，所有博文采用 CC BY-NC-SA 3.0 CN 协议进行许可 并且，博客内的文章严禁转载至CSDN或简书，无论是否署名 To Do  主题重构  增加文章归">
 <meta property="og:locale">
+<meta property="article:published_time" content="2022-05-21T12:48:12.499Z">
+<meta property="article:modified_time" content="2022-05-21T12:48:12.499Z">
 <meta property="article:author" content="Cainong">
 <meta name="twitter:card" content="summary">
     <link
@@ -28,9 +32,9 @@
         href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
     />
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1653137399345">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1653137399345">
-    <link rel="stylesheet" href="/css/style.css?v=1653137399345">
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1653137399341">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1653137399341">
+    <link rel="stylesheet" href="/css/style.css?v=1653137399341">
      
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -126,33 +130,77 @@
     </div>
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
-            <section class="nexmoe-posts">
-    
-    <div class="nexmoe-post">
-        <a href="/2022/04/30/lazer-build&install/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img src="https://cainongw.cn/covers/lazer-build&install.jpg" alt="iOS上osu!lazer的手动构建与自签安装" loading="lazy">
-                    <h1>iOS上osu!lazer的手动构建与自签安装</h1>
-                </div>
-            
-        </a>
+            <div class="nexmoe-post">
 
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2022年04月30日</a>
-            
-            
-                <a class="nexmoefont icon-tag-fill -none-link" href="/tags/iOS/" rel="tag">iOS</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/osu-lazer/" rel="tag">osu!lazer</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%89%8B%E5%8A%A8%E6%9E%84%E5%BB%BA/" rel="tag">手动构建</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E8%87%AA%E7%AD%BE%E5%AE%89%E8%A3%85/" rel="tag">自签安装</a>
-            
-        </div>
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/background.PNG" alt="README" loading="lazy">
+              <h1>README</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年05月21日</a>
+</div>
 
-        <article>
-            
-        </article>
+      <h1 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h1><p>这里是Cainong的blog</p>
+<p>网站托管在<a target="_blank" rel="noopener" href="https://github.com/">Github</a></p>
+<p>框架基于<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></p>
+<p>主题来自Nexmoe，大佬的主题超好看！</p>
+<p>cdn加速来自jsdelivr</p>
+<p>封面画师来自Pixiv画师ひみつ</p>
+<p>个人头像来自画师小已</p>
+<p>感谢！</p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>除特别声明或转载外，所有博文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh">CC BY-NC-SA 3.0 CN</a> 协议进行许可</p>
+<p>并且，博客内的文章严禁转载至CSDN或简书，无论是否署名</p>
+<h1 id="To-Do"><a href="#To-Do" class="headerlink" title="To Do"></a>To Do</h1><ul>
+<li><input disabled="" type="checkbox"> 主题重构</li>
+<li><input disabled="" type="checkbox"> 增加文章归档</li>
+<li><input disabled="" type="checkbox"> <del>少咕咕</del></li>
+</ul>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>博主：</strong>Cainong<br>
+        <strong>文章連結：</strong><a href="https://cainongw.cn/README.md" title="https:&#x2F;&#x2F;cainongw.cn&#x2F;README.md" target="_blank" rel="noopener">https:&#x2F;&#x2F;cainongw.cn&#x2F;README.md</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
     </div>
-    
-</section>
 
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '3a8c8178d6a0c39998f2',
+        clientSecret: '04443afdb99e666fc44dd3190bdf4ab6e24a4c7a',
+        id: window.location.pathname,
+        repo: 'Cainongw.github.io',
+        owner: 'Cainongw',
+        admin: 'Cainongw'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
             <div class="nexmoe-post-right">
               <div class="nexmoe-fixed">
                   <div class="nexmoe-tool"> 
@@ -184,7 +232,7 @@
 
  
 
-<script async src="/js/app.js?v=1653137399345"></script>
+<script async src="/js/app.js?v=1653137399342"></script>
 
 
 

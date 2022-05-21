@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>VoiceMeter的逆向与破解 - Cainong&#39;s Blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://cainongw.cn//favicon.ico" type="image/x-icon" />
+    <meta name="description" content="前言如果您看到了这，您需要知道的： 我不是专业的逆向人员，一定会有错误，遗漏的地方，您可以联系我指正或交流 但请注意，不表明错误地方就对我文章指点不足的，我不接受 其次，这不是教程，您需要有一定的逆向基础 起因疫情期间，由于每天上课摸鱼，大部分时间都和朋友在语音 我便需要一些整活神器，来在与语音里爆破我的朋友 我想起几年前发现的神器——VoiceMeter 这玩意太强大了，除了基本的混响，可视化地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VoiceMeter的逆向与破解">
+<meta property="og:url" content="https://cainongw.cn/2022/05/07/voicemeter-fxxk/index.html">
+<meta property="og:site_name" content="Cainong&#39;s Blog">
+<meta property="og:description" content="前言如果您看到了这，您需要知道的： 我不是专业的逆向人员，一定会有错误，遗漏的地方，您可以联系我指正或交流 但请注意，不表明错误地方就对我文章指点不足的，我不接受 其次，这不是教程，您需要有一定的逆向基础 起因疫情期间，由于每天上课摸鱼，大部分时间都和朋友在语音 我便需要一些整活神器，来在与语音里爆破我的朋友 我想起几年前发现的神器——VoiceMeter 这玩意太强大了，除了基本的混响，可视化地">
+<meta property="og:locale">
+<meta property="og:image" content="https://s2.loli.net/2022/05/07/lETQvHYwF7tPkpr.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/07/GLnZwf4MBkyaJjt.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/21/O4YRh7CmNvnuQeJ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/21/SFGBVbzauegOdkt.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/21/tV7IsWBq6CMYbXQ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/05/21/iPKl5LSDcrONG2d.png">
+<meta property="article:published_time" content="2022-05-07T12:48:06.000Z">
+<meta property="article:modified_time" content="2022-05-21T12:40:39.606Z">
+<meta property="article:author" content="Cainong">
+<meta property="article:tag" content="逆向">
+<meta property="article:tag" content="IDA">
+<meta property="article:tag" content="破解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/05/07/lETQvHYwF7tPkpr.png">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
+    />
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1653137399334">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1653137399334">
+    <link rel="stylesheet" href="/css/style.css?v=1653137399334">
+     
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/background.PNG)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Cainong" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/avatar.png" alt="Cainong"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Cainong">
+            <img src="https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/avatar.png" alt="Cainong" alt="Cainong">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>2</div>
+        <div><span>標籤</span>7</div>
+        <div><span>類別</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:cainongw.cn" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜尋"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://qm.qq.com/cgi-bin/qm/qr?k=2P1-r15Rs7v7krwc3K3BoRR2czFa0wUR&noverify=0" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/13750703" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/Cainongw" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://steamcommunity.com/id/cainongww/" target="_blank" mdui-tooltip="{content: 'Steam'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-steam"></i>
+        </a>
+    </div>
+</div>
+    
+    
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/IDA/" style="font-size: 10px;">IDA</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/osu-lazer/" style="font-size: 10px;">osu!lazer</a> <a href="/tags/%E6%89%8B%E5%8A%A8%E6%9E%84%E5%BB%BA/" style="font-size: 10px;">手动构建</a> <a href="/tags/%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">破解</a> <a href="/tags/%E8%87%AA%E7%AD%BE%E5%AE%89%E8%A3%85/" style="font-size: 10px;">自签安装</a> <a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 10px;">逆向</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2022 Cainong
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/background.PNG" alt="VoiceMeter的逆向与破解" loading="lazy">
+              <h1>VoiceMeter的逆向与破解</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2022年05月07日</a>
+</div>
+
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>如果您看到了这，您需要知道的：</p>
+<p>我不是专业的逆向人员，一定会有错误，遗漏的地方，您可以联系我指正或交流</p>
+<p>但请注意，不表明错误地方就对我文章指点不足的，<strong>我不接受</strong></p>
+<p>其次，这不是教程，您需要有一定的逆向基础</p>
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>疫情期间，由于<del>每天上课摸鱼</del>，大部分时间都和朋友在语音</p>
+<p>我便需要一些整活神器，来在与语音里<del>爆破我的朋友</del></p>
+<p>我想起几年前发现的神器——<a target="_blank" rel="noopener" href="https://vb-audio.com/Voicemeeter/">VoiceMeter</a></p>
+<p>这玩意太强大了，除了基本的混响，可视化地将音频通道显示出来，简直不要太方便</p>
+<p>后来慢慢的我发现<code>VoiceMeter Banana</code>的功能不够用了</p>
+<p>但是<code>Potato</code>是要收费的</p>
+<p>虽然不贵，但是在国内支付<code>VISA</code>卡不是一般的麻烦</p>
+<p>更何况我自己连<code>VISA</code>都没。。。</p>
+<p>那没办法，我就看看我的三脚猫逆向能不能搞定他吧</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>以下基于3.0.2.2版本</p>
+<p>Google出来的教程都是使用的OD</p>
+<p>我懒，反正静态，IDA不香嘛</p>
+<p>那就开干吧</p>
+<p>先看看注册界面</p>
+<p>uhmmm…有个Activate</p>
+<p>直接64位IDA拖进来，分析一通</p>
+<p>一上来就先看看Strings好了</p>
+<p>Activate…嗯？</p>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2022/05/07/lETQvHYwF7tPkpr.png" alt="IYAR_H07_LF_4JI@2__FW_N.png" data-caption="IYAR_H07_LF_4JI@2__FW_N.png" loading="lazy"></p>
+<p>直接跳到注册成功字符串的调用</p>
+<p>![_KYF30_RAM`BSQ963H227_L.png](<a target="_blank" rel="noopener" href="https://s2.loli.net/2022/05/07/hT37FJgvPLsXaYE.png">https://s2.loli.net/2022/05/07/hT37FJgvPLsXaYE.png</a>)</p>
+<p>有点明显，甚至不用看伪代码</p>
+<p>那就直接把jnz改成jz:</p>
+<pre><code>00103A3 75 19 ===&gt; 00103A3 74 19
+</code></pre>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2022/05/07/GLnZwf4MBkyaJjt.png" alt="_4CD~_C0S586@NLRCE3MD21.png" data-caption="_4CD~_C0S586@NLRCE3MD21.png" loading="lazy"></p>
+<p>齐活了？</p>
+<p>吗？</p>
+<h1 id="几天后…"><a href="#几天后…" class="headerlink" title="几天后…"></a>几天后…</h1><p>草，这玩意爆激活了，除了激活界面乱输能提示成功以外，别的地方和没激活一点区别也没有</p>
+<p>我看到似乎网上激活后Challenge的字符会变绿，或许那就是关键之处？</p>
+<p>看了下，变绿后Activate按钮会变成绿色的ACTIVATED</p>
+<p>搜下ACTIVATED。。</p>
+<p>寄！搜不到</p>
+<p>那算了，让我们回到伪代码</p>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2022/05/21/O4YRh7CmNvnuQeJ.png" alt="2YJ05DL~2OBCHJXP5~N39_O.png" data-caption="2YJ05DL~2OBCHJXP5~N39_O.png" loading="lazy"></p>
+<p>我们发现这里与三个函数有关，并且后面的Email和Serial似乎都告诉着我们这俩函数的作用</p>
+<p>唯独有一个<code>sub_14000F530</code></p>
+<p>进入这个函数，我们发现他的返回值不是0i64就是1i64</p>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2022/05/21/SFGBVbzauegOdkt.png" alt="__8S5O5C@4Z3~ZO8QWS_OH0.png" data-caption="__8S5O5C@4Z3~ZO8QWS_OH0.png" loading="lazy"></p>
+<p><del>鲁迅先生说过</del>：逆向的精髓在于大胆尝试</p>
+<p>我们大胆猜测，返回1i64就代表激活成功</p>
+<p>返回1i64的条件是这个if中qword_140135950和sub_14000F2D0(a3)这俩玩意同时等于1</p>
+<p>进入sub_14000F2D0。。</p>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2022/05/21/tV7IsWBq6CMYbXQ.png" alt="3NFRPZ3J_C__H16_V_VDOF1.png" data-caption="3NFRPZ3J_C__H16_V_VDOF1.png" loading="lazy"></p>
+<p>妈的 又臭又长 不看了 直接大胆改了他</p>
+<p>回到汇编，其实跳转的条件就是eax寄存器为1嘛</p>
+<p>那就直接让eax寄存器变成1吧（</p>
+<pre><code>cmp     eax, 1 ===&gt; mov     eax, 1
+</code></pre>
+<p>也就是：</p>
+<pre><code>00EB1E 83 F8 01 ===&gt; 00EB1E B8 01 00 00 00   
+</code></pre>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2022/05/21/iPKl5LSDcrONG2d.png" alt="BMU__~XYVLZ_8RNPC_WTQ_5.png" data-caption="BMU__~XYVLZ_8RNPC_WTQ_5.png" loading="lazy"></p>
+<p>齐活了。。吧</p>
+<p>先这样用着，以后有问题再更新</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>博主：</strong>Cainong<br>
+        <strong>文章連結：</strong><a href="https://cainongw.cn/2022/05/07/voicemeter-fxxk/" title="https:&#x2F;&#x2F;cainongw.cn&#x2F;2022&#x2F;05&#x2F;07&#x2F;voicemeter-fxxk&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;cainongw.cn&#x2F;2022&#x2F;05&#x2F;07&#x2F;voicemeter-fxxk&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/IDA/" rel="tag">IDA</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '3a8c8178d6a0c39998f2',
+        clientSecret: '04443afdb99e666fc44dd3190bdf4ab6e24a4c7a',
+        id: window.location.pathname,
+        repo: 'Cainongw.github.io',
+        owner: 'Cainongw',
+        admin: 'Cainongw'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜尋" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1653137399335"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
