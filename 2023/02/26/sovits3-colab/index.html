@@ -23,9 +23,12 @@
 <meta property="og:image" content="https://s2.loli.net/2023/02/27/CLikTn2d5F6xEI4.png">
 <meta property="og:image" content="https://s2.loli.net/2023/02/27/9heWOVY6duTFMXG.png">
 <meta property="og:image" content="https://s2.loli.net/2023/03/02/WBqHRDTOfh4UEkm.png">
+<meta property="og:image" content="https://s2.loli.net/2023/03/02/gtAhlQj53cXNB71.png">
 <meta property="og:image" content="https://s2.loli.net/2023/03/01/a95srgbvJqNBUfE.png">
+<meta property="og:image" content="https://s2.loli.net/2023/03/01/PDVOWCgX9A4LcG5.png">
+<meta property="og:image" content="https://s2.loli.net/2023/03/02/lcufzBrOqdJ2tZY.png">
 <meta property="article:published_time" content="2023-02-25T17:24:44.000Z">
-<meta property="article:modified_time" content="2023-03-02T12:08:48.911Z">
+<meta property="article:modified_time" content="2023-03-02T12:16:05.250Z">
 <meta property="article:author" content="Cainong">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="语音">
@@ -41,11 +44,11 @@
         href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
     />
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1677759086521">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1677759086521">
-    <link rel="stylesheet" href="/css/style.css?v=1677759086521">
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1677759397204">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1677759397204">
+    <link rel="stylesheet" href="/css/style.css?v=1677759397204">
     
-        <link rel="stylesheet" href="/css/dark.css?v=1677759086521">
+        <link rel="stylesheet" href="/css/dark.css?v=1677759397204">
      
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -195,9 +198,9 @@
 <pre><code>!wget -P hubert/ https://github.com/bshall/hubert/releases/download/v0.1/hubert-soft-0d54a1f4.pt
 </code></pre>
 <p>Drive云盘在挂载后地址为： <code>/content/drive/MyDrive/</code></p>
-<p>下面是详细的：</p>
+<p>下面是详细的</p>
 <p>加一个代码</p>
-<p>![G@_3`OGQ__QW_PZ~55A_PVK.png](<a target="_blank" rel="noopener" href="https://s2.loli.net/2023/03/02/gtAhlQj53cXNB71.png">https://s2.loli.net/2023/03/02/gtAhlQj53cXNB71.png</a>)</p>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2023/03/02/gtAhlQj53cXNB71.png" alt="code.png" data-caption="code.png" loading="lazy"></p>
 <p>在代码框中，你需要多安装一个依赖</p>
 <pre><code>!pip install scikit-maad
 </code></pre>
@@ -239,9 +242,9 @@ drive.mount(&#39;/content/drive&#39;)
 <p>改完之后，加一个代码并运行</p>
 <pre><code>!python inference_main.py
 </code></pre>
-<p>![6DL8`<a href="mailto:&#50;&#x46;&#54;&#56;&#x4f;&#87;&#x49;&#56;&#55;&#x5f;&#x56;&#x56;&#x53;&#54;&#x4f;&#64;&#x39;&#77;&#x2e;&#112;&#x6e;&#x67;">&#50;&#x46;&#54;&#56;&#x4f;&#87;&#x49;&#56;&#55;&#x5f;&#x56;&#x56;&#x53;&#54;&#x4f;&#64;&#x39;&#77;&#x2e;&#112;&#x6e;&#x67;</a>](<a target="_blank" rel="noopener" href="https://s2.loli.net/2023/03/01/PDVOWCgX9A4LcG5.png">https://s2.loli.net/2023/03/01/PDVOWCgX9A4LcG5.png</a>)</p>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2023/03/01/PDVOWCgX9A4LcG5.png" alt="run.png" data-caption="run.png" loading="lazy"></p>
 <p>值得一提的是…即使Colab给了15GB大显存，如果你直接把一首歌不裁剪丢进去也丝毫不妨碍他炸显存</p>
-<p>![E`_ZA__D_5LJ_C_E__O93ES.png](<a target="_blank" rel="noopener" href="https://s2.loli.net/2023/03/02/lcufzBrOqdJ2tZY.png">https://s2.loli.net/2023/03/02/lcufzBrOqdJ2tZY.png</a>)</p>
+<p><img data-fancybox="gallery" src="https://s2.loli.net/2023/03/02/lcufzBrOqdJ2tZY.png" alt="boom.png" data-caption="boom.png" loading="lazy"></p>
 <p>成功了就把results里的成果下载下来就好了</p>
 <h2 id="本地推理"><a href="#本地推理" class="headerlink" title="本地推理"></a>本地推理</h2><p>首先，像上一篇一样配好环境 <del>（这一句话足够折腾几个小时）</del></p>
 <p>然后把Colab里出来的G_开头的.pth模型下载下来，放到你本地的<code>logs/32k</code>或者<code>logs/48k</code>文件夹中</p>
@@ -323,7 +326,7 @@ drive.mount(&#39;/content/drive&#39;)
 
  
 
-<script async src="/js/app.js?v=1677759086522"></script>
+<script async src="/js/app.js?v=1677759397205"></script>
 
 
 
