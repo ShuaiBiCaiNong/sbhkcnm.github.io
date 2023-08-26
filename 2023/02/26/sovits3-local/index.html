@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://s2.loli.net/2023/03/01/a95srgbvJqNBUfE.png">
 <meta property="og:image" content="https://s2.loli.net/2023/03/08/PDFbkSNy162OwCG.png">
 <meta property="article:published_time" content="2023-02-25T17:24:44.000Z">
-<meta property="article:modified_time" content="2023-03-10T09:16:27.956Z">
+<meta property="article:modified_time" content="2023-07-28T14:40:33.966Z">
 <meta property="article:author" content="Cainong">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="语音">
@@ -46,11 +46,11 @@
         href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
     />
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1678440402787">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1678440402787">
-    <link rel="stylesheet" href="/css/style.css?v=1678440402787">
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1692117150112">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1692117150112">
+    <link rel="stylesheet" href="/css/style.css?v=1692117150112">
     
-        <link rel="stylesheet" href="/css/dark.css?v=1678440402787">
+        <link rel="stylesheet" href="/css/dark.css?v=1692117150112">
      
     
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -76,8 +76,8 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>5</div>
-        <div><span>標籤</span>10</div>
+        <div><span>文章</span>8</div>
+        <div><span>標籤</span>19</div>
         <div><span>類別</span>0</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
@@ -129,7 +129,7 @@
     
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/AI/" style="font-size: 20px;">AI</a> <a href="/tags/IDA/" style="font-size: 10px;">IDA</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/osu-lazer/" style="font-size: 10px;">osu!lazer</a> <a href="/tags/%E6%89%8B%E5%8A%A8%E6%9E%84%E5%BB%BA/" style="font-size: 10px;">手动构建</a> <a href="/tags/%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">破解</a> <a href="/tags/%E8%87%AA%E7%AD%BE%E5%AE%89%E8%A3%85/" style="font-size: 10px;">自签安装</a> <a href="/tags/%E8%AF%AD%E9%9F%B3/" style="font-size: 20px;">语音</a> <a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 10px;">逆向</a>
+      <a href="/tags/AI/" style="font-size: 20px;">AI</a> <a href="/tags/Ai/" style="font-size: 10px;">Ai</a> <a href="/tags/HomeLab/" style="font-size: 20px;">HomeLab</a> <a href="/tags/IDA/" style="font-size: 10px;">IDA</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/bw/" style="font-size: 10px;">bw</a> <a href="/tags/diff/" style="font-size: 10px;">diff</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/osu-lazer/" style="font-size: 10px;">osu!lazer</a> <a href="/tags/vlog/" style="font-size: 10px;">vlog</a> <a href="/tags/%E6%88%B4%E5%B0%94/" style="font-size: 20px;">戴尔</a> <a href="/tags/%E6%89%8B%E5%8A%A8%E6%9E%84%E5%BB%BA/" style="font-size: 10px;">手动构建</a> <a href="/tags/%E6%97%85%E6%B8%B8/" style="font-size: 10px;">旅游</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 20px;">服务器</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">破解</a> <a href="/tags/%E8%87%AA%E7%AD%BE%E5%AE%89%E8%A3%85/" style="font-size: 10px;">自签安装</a> <a href="/tags/%E8%AF%AD%E9%9F%B3/" style="font-size: 20px;">语音</a> <a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 10px;">逆向</a>
     </div>
     
   </div>
@@ -354,6 +354,29 @@ pip install scikit-image==0.19.3
 <p>只要有Torch就行，是cuda还是CPU无所谓</p>
 <p>推理结束后，你的成果就在…/results中了</p>
 <p>至此，本地Sovits也就告一段落了</p>
+<h1 id="一些问题解答"><a href="#一些问题解答" class="headerlink" title="一些问题解答"></a>一些问题解答</h1><h2 id="batch-size"><a href="#batch-size" class="headerlink" title="batch_size"></a>batch_size</h2><p>最前面的当属batch_size，网上只告诉你这个越大占显存也越大，却没告诉你batch_size对于模型和成果有着直接影响</p>
+<p>batch_size是指在一次迭代中输入给模型的样本数量。在训练深度学习模型时，通常会将训练数据集分成多个batch，每个batch包含一定数量的样本。模型将会接收每个batch的样本作为输入，计算并更新模型的参数。这个过程称为一个epoch，通常需要多个epoch来训练一个模型。<br>（此回答来自ChatGPT）</p>
+<p>显然，batch_size有一个最佳值可以训练出效果最好的模型</p>
+<p>虽然理论来说，batch_size太大会翻车</p>
+<p>但据我所知，除非你是80G的A100阵列，不然绝大多数情况下应该是达不到翻车的数值的</p>
+<p>所以在不炸显存的情况下，可以暂且理解为batch_size越大越好</p>
+<p>我看到有人问“啊为什么我的loss一直在波动没有收敛迹象的？”</p>
+<p>那多半就是batch_size的锅</p>
+<p>网上那些说batch_size给2 甚至1的那完全是 离大谱</p>
+<p>特别是1，那意味着Ai会随机抽取样本进行学习，每次就一个样本</p>
+<p>那能不能收敛完全就是看脸</p>
+<p>为什么我想放在最前面写这个，正是因为我batch_size给到了4波动依然很大（已经超过10w steps）</p>
+<p>但你要说batch_size太小真的不能用吗 倒也不是</p>
+<p>毕竟样本还是样本，只能说你的模型大概永不会收敛</p>
+<p>总之，显存小去Colab总不是一件坏事，干嘛要折腾自己电脑呢</p>
+<h2 id="Sovits3-0和Sovits4-0"><a href="#Sovits3-0和Sovits4-0" class="headerlink" title="Sovits3.0和Sovits4.0"></a>Sovits3.0和Sovits4.0</h2><p>测试过后发现Sovits4.0无论是训练还是推理显存占用都小了很多</p>
+<p>同样是8G，Sovits4.0我甚至可以开到8的batch_size</p>
+<p>但也有奇怪的情况</p>
+<p>在我这，Sovits4.0在相同的steps下出来的效果远远不如3.0</p>
+<p>在3.0中只需要1000steps就已经有贴近本人声线的感觉了</p>
+<p>而4.0同样1000steps甚至2000steps，出来的结果也会带电</p>
+<p>（以上是实测经历，不代表通用性，因为只是我一个人的实验结果，所以偶然性极大）</p>
+<p>不过放到现在，4.0在有聚类模型的情况下效果还是优于3.0的</p>
 <h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>未经允许，禁止转载到国内网站，包括但不限于CSDN等</p>
 
   </article>
@@ -430,7 +453,7 @@ pip install scikit-image==0.19.3
 
  
 
-<script async src="/js/app.js?v=1678440402788"></script>
+<script async src="/js/app.js?v=1692117150112"></script>
 
 
 

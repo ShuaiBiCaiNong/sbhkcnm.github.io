@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    
+    <title>把自己变成初音未来！Diffsinger折腾记录 - Cainong&#39;s Blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://cainongw.cn//favicon.ico" type="image/x-icon" />
+    <meta name="description" content="起因：又是東雪蓮！B站上的Diffsinger Ai東雪蓮让我发现了Diffsinger这个项目 众所周知，東雪蓮作为罕见，当然是不唱中文歌的 而Diffsinger默认词典又需要大量的中文干声素材 所以我猜测B站上那个视频用的是语音数据 因为不是干声，也就不会有广阔的音域和转音 那么那个视频里的电也就合情合理了 虽然说SVS类型的Ai应该尽可能接近真人才对（像ACE Studio，Synthes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把自己变成初音未来！Diffsinger折腾记录">
+<meta property="og:url" content="https://cainongw.cn/2023/05/01/diffsinger/index.html">
+<meta property="og:site_name" content="Cainong&#39;s Blog">
+<meta property="og:description" content="起因：又是東雪蓮！B站上的Diffsinger Ai東雪蓮让我发现了Diffsinger这个项目 众所周知，東雪蓮作为罕见，当然是不唱中文歌的 而Diffsinger默认词典又需要大量的中文干声素材 所以我猜测B站上那个视频用的是语音数据 因为不是干声，也就不会有广阔的音域和转音 那么那个视频里的电也就合情合理了 虽然说SVS类型的Ai应该尽可能接近真人才对（像ACE Studio，Synthes">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-05-01T10:22:21.000Z">
+<meta property="article:modified_time" content="2023-08-14T05:13:31.402Z">
+<meta property="article:author" content="Cainong">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="Ai">
+<meta property="article:tag" content="diff">
+<meta name="twitter:card" content="summary">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"
+    />
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1692117150107">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1692117150107">
+    <link rel="stylesheet" href="/css/style.css?v=1692117150107">
+    
+        <link rel="stylesheet" href="/css/dark.css?v=1692117150107">
+     
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/background.PNG)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Cainong" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/avatar.png" alt="Cainong"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Cainong">
+            <img src="https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/avatar.png" alt="Cainong" alt="Cainong">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>8</div>
+        <div><span>標籤</span>19</div>
+        <div><span>類別</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:cainongw.cn" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜尋"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://qm.qq.com/cgi-bin/qm/qr?k=2P1-r15Rs7v7krwc3K3BoRR2czFa0wUR&noverify=0" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/13750703" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/Cainongw" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(222, 222, 222);background-color: rgba(222, 222, 222, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://steamcommunity.com/id/cainongww/" target="_blank" mdui-tooltip="{content: 'Steam'}" style="color: rgb(222, 222, 222);background-color: rgba(222, 222, 222, .15);">
+            <i class="nexmoefont icon-steam"></i>
+        </a>
+    </div>
+</div>
+    
+    
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/AI/" style="font-size: 20px;">AI</a> <a href="/tags/Ai/" style="font-size: 10px;">Ai</a> <a href="/tags/HomeLab/" style="font-size: 20px;">HomeLab</a> <a href="/tags/IDA/" style="font-size: 10px;">IDA</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/bw/" style="font-size: 10px;">bw</a> <a href="/tags/diff/" style="font-size: 10px;">diff</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/osu-lazer/" style="font-size: 10px;">osu!lazer</a> <a href="/tags/vlog/" style="font-size: 10px;">vlog</a> <a href="/tags/%E6%88%B4%E5%B0%94/" style="font-size: 20px;">戴尔</a> <a href="/tags/%E6%89%8B%E5%8A%A8%E6%9E%84%E5%BB%BA/" style="font-size: 10px;">手动构建</a> <a href="/tags/%E6%97%85%E6%B8%B8/" style="font-size: 10px;">旅游</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 20px;">服务器</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E7%A0%B4%E8%A7%A3/" style="font-size: 10px;">破解</a> <a href="/tags/%E8%87%AA%E7%AD%BE%E5%AE%89%E8%A3%85/" style="font-size: 10px;">自签安装</a> <a href="/tags/%E8%AF%AD%E9%9F%B3/" style="font-size: 20px;">语音</a> <a href="/tags/%E9%80%86%E5%90%91/" style="font-size: 10px;">逆向</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Cainong
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-fancybox="gallery" src="https://cdn.jsdelivr.net/gh/Cainongw/Cainongw.github.io@latest/images/background.PNG" alt="把自己变成初音未来！Diffsinger折腾记录" loading="lazy">
+              <h1>把自己变成初音未来！Diffsinger折腾记录</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2023年05月01日</a>
+</div>
+
+      <h1 id="起因："><a href="#起因：" class="headerlink" title="起因："></a>起因：</h1><p>又是東雪蓮！B站上的Diffsinger Ai東雪蓮让我发现了Diffsinger这个项目</p>
+<p>众所周知，東雪蓮作为罕见，当然是不唱中文歌的</p>
+<p>而Diffsinger默认词典又需要大量的中文干声素材</p>
+<p>所以我猜测B站上那个视频用的是语音数据</p>
+<p>因为不是干声，也就不会有广阔的音域和转音</p>
+<p>那么那个视频里的电也就合情合理了</p>
+<p>虽然说SVS类型的Ai应该尽可能接近真人才对（像ACE Studio，SynthesizerV那种）</p>
+<p>但电音却有种VOCALOID的感觉，倒也不是坏事</p>
+<p>一开始我是打算接着用我兄弟的数据集的，但问题来了：</p>
+<p>diff项目需要大量的数据集（该项目建议4-5小时）我兄弟的语音数据仅仅只有20分钟</p>
+<p>有人说：我可以用Sovits Diff-svc把开源数据集（Opencpop那种）换成兄弟的声音啊？</p>
+<p>是，但只要有音色泄露的问题存在出来的声音就不会像本人，况且这样套娃音质是不可控的</p>
+<p>所以我兄弟得等以后了</p>
+<p>那我又想折腾，就只能迫害我自己了</p>
+<h1 id="正片开始"><a href="#正片开始" class="headerlink" title="正片开始"></a>正片开始</h1><p>考虑到听自己唱歌实在太处刑了，所以我决定也先用说话数据试试看</p>
+<p>这里有必要列一下我的麦：Blue Snowball</p>
+<p>虽然不是高端麦克风，但是折腾Ai足矣</p>
+<h1 id="准备数据集"><a href="#准备数据集" class="headerlink" title="准备数据集"></a>准备数据集</h1><p>我认为流程应该是：</p>
+<p>前期录制——匹配响度——降噪——切片——标注</p>
+<h2 id="前期录制"><a href="#前期录制" class="headerlink" title="前期录制"></a>前期录制</h2><p>内容很简单，就是我找各种中文念出来，语速平缓，吐字清晰</p>
+<p>总共大概半个小时</p>
+<h2 id="匹配响度"><a href="#匹配响度" class="headerlink" title="匹配响度"></a>匹配响度</h2><p>这里选择Au，按照DiffSinger的官方教程来</p>
+<h2 id="降噪"><a href="#降噪" class="headerlink" title="降噪"></a>降噪</h2><p><del>去你妈的Au和什么RX9，我单方面宣布UVR是最强的降噪工具</del></p>
+<p>试了一圈，UVR太强了只能说</p>
+<p>Kim_Vocal模型，Vocal Only，直接输出，降噪出来不仅安静人声几乎无失真，真的比Au强太多了</p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>按照上面下来就用自动切片机切就好了</p>
+<h2 id="标注"><a href="#标注" class="headerlink" title="标注"></a>标注</h2><p>你以为我会手动标注吗？</p>
+<p>不可能，我们是懒狗炼丹师，所以我选择了阿里巴巴达摩院的Paraformer项目进行自动标注</p>
+<p>一开始其实用的OpenAi的whisper，但那个对于中文的准确性远远不如Paraformer</p>
+<p>也能理解，毕竟Whisper兼顾多种语言，Paraformer则是专精于中文和少量的英语</p>
+<p>之前用的venv，这次为了随时调用，我选择anaconda</p>
+<p>Conda安装教程不多说了，这里说配环境：</p>
+<p>首先我们要给funasr创建一个环境：</p>
+<pre><code>conda create -n funasr python=3.7
+</code></pre>
+<p>然后激活环境：</p>
+<pre><code>conda activate funasr
+</code></pre>
+<p>于是就可以安装了：</p>
+<pre><code>pip install funasr
+</code></pre>
+<p>你也可以</p>
+<pre><code>git clone [https://github.com/alibaba/FunASR.git](https://github.com/alibaba/FunASR.git) &amp;&amp; cd FunASR
+
+pip install --editable ./
+</code></pre>
+<p>前提是你的电脑里有git</p>
+<p>为了调用模型我们需要 Model Scope</p>
+<pre><code>pip install &quot;modelscope[audio_asr]&quot; --upgrade -f https://modelscope.oss-cn-beijing.aliyuncs.com/releases/repo.html
+</code></pre>
+<p>这里两步如果报错了大概是需要安装Visual Studio</p>
+<p>你需要在Visual Studio Installer中安装“使用C++的桌面开发”并确保安装详细信息的两项勾选：MSVC生成工具、Windows SDK</p>
+<p>完事安装Torch，可以是CPU也可以是GPU版本</p>
+<p>由于Python版本问题，我们只能装11.6的版本</p>
+<pre><code>conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvidia
+</code></pre>
+<p>（这里是GPU版本）</p>
+<p>然后我们调用一下官方Demo：</p>
+<pre><code>from modelscope.pipelines import pipeline
+from modelscope.utils.constant import Tasks
+
+inference_pipeline = pipeline(
+    task=Tasks.auto_speech_recognition,
+    model=&#39;damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch&#39;)
+
+rec_result = inference_pipeline(audio_in=&#39;你自己的音频.wav&#39;)
+print(rec_result)
+</code></pre>
+<p>效果还是可以的，中英语混合而且准确度很高</p>
+<p>我们引用os和pypinyin批量处理并把它们转成对应的拼音保存在.lab里</p>
+<pre><code>import os
+from modelscope.pipelines import pipeline
+from modelscope.utils.constant import Tasks
+from pypinyin import lazy_pinyin
+
+
+inference_pipeline = pipeline(
+    task=Tasks.auto_speech_recognition,
+    model=&#39;damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-pytorch&#39;)
+raw_path = r&quot;源wav的地址&quot;
+list = os.listdir(raw_path)
+OUTPUT_PATH = r&quot;.lab输出地址&quot;
+print(list)
+
+
+for i in list:
+    path = raw_path + &quot;\\&quot; + i
+    rec_result = inference_pipeline(path)
+    print(rec_result)
+    pinyin = lazy_pinyin(rec_result[&#39;text&#39;])
+    print(pinyin)
+    str = &#39; &#39;.join(pinyin)
+    no_prefix = i.split(&quot;.&quot;)[0]
+    lab = OUTPUT_PATH + &quot;\\&quot; + no_prefix
+    with open(lab + &#39;.lab&#39;,&#39;w&#39;) as f:
+        f.write(str)
+</code></pre>
+<p><del>别骂了别骂了我知道我的代码跟屎一样能用就可以了</del></p>
+<p>用MinLable查看一下是否正确，核对一下</p>
+<p>完事之后就用项目里的notebook一路下一步就好了</p>
+<p>最后他会输出训练的命令，在你项目的根目录运行就好了</p>
+<p>最后我练了3天，22w步</p>
+<p>您猜怎么的？翻车了</p>
+<p>出来我本人的声音是电的，电流声非常明显，处于完全不可用的状态</p>
+<p>看来还是得要干声数据，下次写</p>
+<p><del>咕咕</del></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>博主：</strong>Cainong<br>
+        <strong>文章連結：</strong><a href="https://cainongw.cn/2023/05/01/diffsinger/" title="https:&#x2F;&#x2F;cainongw.cn&#x2F;2023&#x2F;05&#x2F;01&#x2F;diffsinger&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;cainongw.cn&#x2F;2023&#x2F;05&#x2F;01&#x2F;diffsinger&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Ai/" rel="tag">Ai</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/diff/" rel="tag">diff</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '3a8c8178d6a0c39998f2',
+        clientSecret: '04443afdb99e666fc44dd3190bdf4ab6e24a4c7a',
+        id: window.location.pathname,
+        repo: 'Cainongw.github.io',
+        owner: 'Cainongw',
+        admin: 'Cainongw'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜尋" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1692117150107"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
